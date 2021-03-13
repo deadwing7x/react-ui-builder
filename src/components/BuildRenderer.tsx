@@ -44,7 +44,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
     const isElementPresentInDOM = document.getElementById(draggedElementId);
 
     if (isElementPresentInDOM !== null) {
-      sessionStorage.removeItem(draggedElementId);
+      localStorage.removeItem(draggedElementId);
       document.getElementById(draggedElementId)?.remove();
       setIsOpen(false);
 
@@ -63,7 +63,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
 
   // Notifies when an existing element is dragged
   const onElementDragStartHandler = (elementId: string) => {
-    const element: any = sessionStorage.getItem(elementId);
+    const element: any = localStorage.getItem(elementId);
     setDraggedElement(JSON.parse(element));
     setDraggedElementId(elementId);
   };
@@ -108,7 +108,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
 
   const handleKeypress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      const element: any = sessionStorage.getItem(e.currentTarget.id);
+      const element: any = localStorage.getItem(e.currentTarget.id);
       setDraggedElement(JSON.parse(element));
       setIsOpen(true);
     }
@@ -116,8 +116,8 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Delete") {
-      const element: any = sessionStorage.getItem(e.currentTarget.id);
-      sessionStorage.removeItem(e.currentTarget.id);
+      const element: any = localStorage.getItem(e.currentTarget.id);
+      localStorage.removeItem(e.currentTarget.id);
       document.getElementById(e.currentTarget.id)?.remove();
     }
   };
@@ -150,7 +150,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
       };
 
       if (elementToBeRendered.length <= 0) {
-        sessionStorage.setItem(elementId, JSON.stringify(element));
+        localStorage.setItem(elementId, JSON.stringify(element));
       }
 
       return (
@@ -199,7 +199,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
       };
 
       if (elementToBeRendered.length <= 0) {
-        sessionStorage.setItem(elementId, JSON.stringify(element));
+        localStorage.setItem(elementId, JSON.stringify(element));
       }
 
       return (
@@ -251,7 +251,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
       };
 
       if (elementToBeRendered.length <= 0) {
-        sessionStorage.setItem(elementId, JSON.stringify(element));
+        localStorage.setItem(elementId, JSON.stringify(element));
       }
 
       return (
@@ -327,7 +327,7 @@ const BuildRenderer: React.FC<IBuildRendererProps> = (
   useEffect(() => {
     const elementsMap = new Map();
 
-    for (let [key, value] of Object.entries(sessionStorage)) {
+    for (let [key, value] of Object.entries(localStorage)) {
       elementsMap.set(key, JSON.parse(value));
     }
 

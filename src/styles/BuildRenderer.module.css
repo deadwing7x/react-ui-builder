@@ -1,0 +1,31 @@
+.onDragStart {
+  background-color: #8aeeee;
+}
+
+.onDrop {
+  background-color: white;
+  backdrop-filter: blur(10px);
+}
+
+.closeButton {
+  position: relative;
+  top: 10px;
+  font-size: 1.5rem;
+}
+
+.formInput:focus {
+  border: 2px solid black;
+  outline: none;
+}
+
+.formInput {
+  padding-left: 10px;
+}
+
+.onClickBorder {
+  border: 2px solid red;
+}
+
+.noBorder {
+  border: initial;
+}

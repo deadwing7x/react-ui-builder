@@ -1,0 +1,5 @@
+.settingsPanel {
+  height: 100vh;
+  background-color: #2d2d2d;
+  z-index: 99;
+}

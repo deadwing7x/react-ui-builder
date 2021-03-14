@@ -1,8 +1,21 @@
 # react-ui-builder
 
-A simple UI Builder built with React. It provides the option to add three elements namely, label, input and button to the DOM. You can add those elements, drag them to new locations, edit their font size and weight as well as delete them.
+## Brief overview of the project:
 
-Tailwind CSS is used to design the elements on the page. The app is bundled with Webpack and all ES6+ code is transpiled with Babel.
+The application is built using React along with TypeScript. It is bundled through Webpack and all ES6+ code is transpiled to browser supported code by Babel. Tailwind CSS is also used to design some parts of the page.
+
+There are two main components, the BuildRenderer and the SettingsPanel. The SettingsPanel component hosts the three HTML elements which are allowed to be dragged, namely Label, Input and Button.
+
+Flow on how the elements are rendered when they are dragged and dropped over the zone.
+
+1. Once the element is dragged and dropped on the BuildRenderer component, the onDrop event notifies the application of the X and Y positions on the client where the element has been dropped.
+2. A modal is opened up, where the Label, Font Size and the Font Weight fields are left for the users to populate. The X and Y fields are populated directly through the mouse event.
+3. Once the user enters the required information, and clicks on Save Changes, all the element properties and its style is fed to a renderElement function which renders the element on the screen and saves the configuration to the localStorage.
+4. Since the elements are saved on the localStorage, if you refresh the page any time, the previous elements will be persistent on the screen.
+5. Anytime an existing element is dragged on the screen, the previous element is removed from the localStorage as well as the DOM and a new id is generated for the newly dragged element, and it gets saved.
+6. On clicking any element and pressing ‘Enter’, the edit configuration modal opens up with the pre-populated values and the current X and Y position.
+7. On pressing the ‘Delete’ key, the element is removed from localStorage and the DOM as well, handled through the onKeyDown event.
+
 
 ## Steps to run UI - Builder on local machine
 
